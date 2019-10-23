@@ -10,6 +10,7 @@ import {ApiService} from './core/api.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
+import {SystemModule} from './system/system.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {routing} from './app.routing';
     BrowserModule,
     routing,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SystemModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

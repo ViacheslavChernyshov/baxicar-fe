@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {ApiService} from '../core/api.service';
 
 @Component({
-  selector: 'app-add-user',
+  selector: 'bax-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })

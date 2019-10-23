@@ -6,7 +6,7 @@ import {first} from 'rxjs/operators';
 import {ApiService} from '../core/api.service';
 
 @Component({
-  selector: 'app-edit-user',
+  selector: 'bax-edit-user',
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.css']
 })

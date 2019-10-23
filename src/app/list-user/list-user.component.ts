@@ -4,7 +4,7 @@ import {User} from '../model/user.model';
 import {ApiService} from '../core/api.service';
 
 @Component({
-  selector: 'app-list-user',
+  selector: 'bax-list-user',
   templateUrl: './list-user.component.html',
   styleUrls: ['./list-user.component.css']
 })
@@ -33,15 +33,15 @@ export class ListUserComponent implements OnInit {
         debugger;
         this.users = this.users.filter(u => u !== user);
       });
-  };
+  }
 
   editUser(user: User): void {
     window.sessionStorage.removeItem('editUserId');
     window.sessionStorage.setItem('editUserId', user.id.toString());
     this.router.navigate(['edit-user']);
-  };
+  }
 
   addUser(): void {
     this.router.navigate(['add-user']);
-  };
+  }
 }
