@@ -1,5 +1,8 @@
 <p>
   driver-page works!
 </p>
-<input type="text" #startAddress (input)="onKeyUp(startAddress.value)">
-<div #googleMap style="width:300%;height:800px"></div>
+<input type="text" #startAddress (input)="onKeyUpStartAddress(startAddress.value)">
+<input type="text" #endAddress (input)="onKeyUpEndAddress(endAddress.value)">
+<!--<input type="text" #search [formControl]="searchControl">-->
+<!--#search [formControl]="searchControl"-->
+<div #googleMap style="width:100%;height:800px"></div>
