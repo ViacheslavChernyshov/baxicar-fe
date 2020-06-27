@@ -1,8 +1,5 @@
-<p>
-  driver-page works!
-</p>
-<input type="text" #startAddress (input)="onKeyUpStartAddress(startAddress.value)">
-<input type="text" #endAddress (input)="onKeyUpEndAddress(endAddress.value)">
-<!--<input type="text" #search [formControl]="searchControl">-->
-<!--#search [formControl]="searchControl"-->
+<input type="text" [(ngModel)]=startAddressInput #startAddress (input)="onKeyUpStartAddress(startAddress.value)">
+
+<input type="text" [(ngModel)]=endAddressInput #endAddress (input)="onKeyUpEndAddress(endAddress.value)">
+
 <div #googleMap style="width:100%;height:800px"></div>
