@@ -37,6 +37,8 @@ export class DriverPageComponent implements AfterContentInit {
   waypoints: [];
   directionsService: google.maps.DirectionsService;
 
+  markers = [];
+
   public ngAfterContentInit(): void {
     this.searchControl = new FormControl();
     this.geoCoder = new google.maps.Geocoder();
@@ -91,20 +93,20 @@ export class DriverPageComponent implements AfterContentInit {
         this.routeTrip();
       }
 
-      google.maps.event.addListener(this.startRouteMarker, 'dragend', () => {
-        this.geoCoder = new google.maps.Geocoder();
-        this.geoCoder.geocode({location: this.startRouteMarker.getPosition()}, (results, status) => {
-          if (status === google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-              this.startAddressInput = results[0].formatted_address;
-              // if (this.startRouteMarker != null && this.endRouteMarker != null) {
-              //   console.log('2');
-              //   this.routeTrip();
-              // }
-            }
-          }
-        });
-      });
+      // google.maps.event.addListener(this.startRouteMarker, 'dragend', () => {
+      //   this.geoCoder = new google.maps.Geocoder();
+      //   this.geoCoder.geocode({location: this.startRouteMarker.getPosition()}, (results, status) => {
+      //     if (status === google.maps.GeocoderStatus.OK) {
+      //       if (results[0]) {
+      //         this.startAddressInput = results[0].formatted_address;
+      //         // if (this.startRouteMarker != null && this.endRouteMarker != null) {
+      //         //   console.log('2');
+      //         //   this.routeTrip();
+      //         // }
+      //       }
+      //     }
+      //   });
+      // });
     });
 
     google.maps.event.addListener(this.endAddressAutocomplete, 'place_changed', () => {
@@ -133,23 +135,42 @@ export class DriverPageComponent implements AfterContentInit {
         this.routeTrip();
       }
 
-      google.maps.event.addListener(this.endRouteMarker, 'dragend', () => {
-        this.geoCoder = new google.maps.Geocoder();
-        this.geoCoder.geocode({location: this.endRouteMarker.getPosition()}, (results, status) => {
-          if (status === google.maps.GeocoderStatus.OK) {
-            if (results[0]) {
-              this.endAddressInput = results[0].formatted_address;
-              // if (this.startRouteMarker != null && this.endRouteMarker != null) {
-              //   console.log('4');
-              //   this.routeTrip();
-              // }
-            }
-          }
-        });
-      });
+      // google.maps.event.addListener(this.endRouteMarker, 'dragend', () => {
+      //   this.geoCoder = new google.maps.Geocoder();
+      //   this.geoCoder.geocode({location: this.endRouteMarker.getPosition()}, (results, status) => {
+      //     if (status === google.maps.GeocoderStatus.OK) {
+      //       if (results[0]) {
+      //         this.endAddressInput = results[0].formatted_address;
+      //         // if (this.startRouteMarker != null && this.endRouteMarker != null) {
+      //         //   console.log('4');
+      //         //   this.routeTrip();
+      //         // }
+      //       }
+      //     }
+      //   });
+      // });
     });
+
+    google.maps.event.addListener(this.map, 'click', (event) => {
+      console.log('event' + event.latLng);
+      this.addMarker(event.latLng);
+    });
+
+
   }
 
+  addMarker(location) {
+    console.log('1');
+    console.log(location);
+    const marker = new google.maps.Marker({
+      position: location,
+      map: this.map
+    });
+    console.log('2');
+    console.log(marker);
+    this.markers.push(marker);
+    console.log('3');
+  }
 
   routeTrip() {
     if (this.directionsDisplay != null) {
@@ -176,6 +197,8 @@ export class DriverPageComponent implements AfterContentInit {
     this.directionsService = new google.maps.DirectionsService();
     this.directionsService.route(request, (response, status) => {
       if (status === google.maps.DirectionsStatus.OK) {
+        console.log(response);
+        console.log(response.routes[0].legs[0].start_address);
         this.directionsDisplay.setDirections(response);
       } else {
         alert('failed to get directions');
@@ -184,6 +207,7 @@ export class DriverPageComponent implements AfterContentInit {
     this.startRouteMarker.setVisible(false);
     this.endRouteMarker.setVisible(false);
   }
+
 
   onKeyUpStartAddress(value) {
     this.startAddress = value;
