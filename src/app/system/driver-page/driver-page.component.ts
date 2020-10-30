@@ -426,9 +426,9 @@ export class DriverPageComponent implements AfterContentInit {
 
   computeTotalDistance(result) {
     let total = 0;
-    const myroute = result.routes[0];
-    for (let i = 0; i < myroute.legs.length; i++) {
-      total += myroute.legs[i].distance.value;
+    const myRoute = result.routes[0];
+    for (let i = 0; i < myRoute.legs.length; i++) {
+      total += myRoute.legs[i].distance.value;
     }
     total = total / 1000;
     console.log(total);
@@ -489,8 +489,18 @@ export class DriverPageComponent implements AfterContentInit {
     console.log('request objectObservable:', objectObservable);
 
     return objectObservable;
-
   }
 
+  onRouteReset($event) {
+    this.startRouteMarker.setMap(null);
+    this.endRouteMarker.setMap(null);
+
+    this.startRouteMarker = null;
+    this.endRouteMarker = null;
+
+    this.directionsDisplay.setMap(null);
+    this.directionsDisplay.setMap(null);
+
+  }
 }
 

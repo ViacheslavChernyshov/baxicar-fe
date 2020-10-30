@@ -3,5 +3,5 @@
 <input type="text" [(ngModel)]=endAddressInput #endAddress (input)="onKeyUpEndAddress(endAddress.value)">
 
 <button (click)="onSave($event)">Save</button>
-
+<button (click)="onRouteReset($event)">Reset</button>
 <div #googleMap style="width:100%;height:800px"></div>
