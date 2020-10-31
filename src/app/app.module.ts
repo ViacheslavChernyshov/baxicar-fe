@@ -11,8 +11,9 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {routing} from './app.routing';
 import {SystemModule} from './system/system.module';
+
 // import {AgmCoreModule} from 'angular2-google-maps/core';
-import {AgmCoreModule} from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -28,9 +29,8 @@ import {AgmCoreModule} from '@agm/core';
     ReactiveFormsModule,
     HttpClientModule,
     SystemModule,
-    FormsModule,
+    FormsModule
     // ,    AgmCoreModule.forRoot({apiKey: 'AIzaSyAmjI8t-x5OZdt1JbGA76oyGWyCIqI42KA'})
-    AgmCoreModule.forRoot({apiKey: 'AIzaSyB_7bzLoenfk8B7EG3SPo62wZPYe5mMmOI', libraries: ['places']})
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

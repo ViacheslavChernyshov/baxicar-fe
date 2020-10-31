@@ -5,14 +5,13 @@ import {SystemRoutingModule} from './system-routing.module';
 import {PassengerPageComponent} from './passenger-page/passenger-page.component';
 import {DriverPageComponent} from './driver-page/driver-page.component';
 import {SystemComponent} from './system.component';
-import {AgmCoreModule} from '@agm/core';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     SystemRoutingModule,
-    AgmCoreModule,
     ReactiveFormsModule,
     FormsModule
   ],
